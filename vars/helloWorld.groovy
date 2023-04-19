@@ -1,3 +1,8 @@
-def call(Map config = [:]) {
-    sh "echo Hello ${config.name}. Today is ${config.dayOfWeek}."
+def buildAndTest() {
+    stage('Build') {
+        sh 'mvn clean install'
+    }
+    stage('Test') {
+        sh 'mvn test'
+    }
 }
